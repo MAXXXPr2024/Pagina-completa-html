@@ -1,0 +1,16 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Archivos de entorno y claves secretas (si usás)
+.env
+.env.local
+
+# Carpetas de editores de código
+.vscode/
+.idea/
+
+# Si en algún momento usás Node.js
+node_modules/
+npm-debug.log

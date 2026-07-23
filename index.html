@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Sorpresa Para vos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="cuerpo-pagina">
+
+    <!-- PANTALLA DE ENTRADA -->
+    <div id="pantalla-inicio">
+        <p>✨ Toca la pantalla para abrir ✨</p>
+    </div>
+
+    <!-- IMAGEN DE FONDO COMPLETA -->
+    <div id="imagen-fondo-pantalla" class="fondo-pantalla oculto-fondo"></div>
+
+    <!-- PELOTITAS FLOTANTES -->
+    <div class="background-circles" id="particulas"></div>
+
+    <!-- SECCIÓN 1: BIENVENIDA -->
+    <main class="card oculto" id="sec-bienvenida">
+        <h1>Hola, tengo una propuesta indecente para vos</h1>
+        <button id="btn-comenzar">Comenzar</button>
+    </main>
+
+    <!-- SECCIÓN 2: PREGUNTA FINAL / CELEBRACIÓN -->
+    <main class="card oculto" id="sec-final">
+        <!-- FOTO INICIAL -->
+        <img src="imagenes/emoji.jpg" alt="Foto especial" class="foto-destacada" id="foto-cine">
+        
+        <!-- VIDEO DE CELEBRACIÓN (Oculto al inicio) -->
+        <div id="contenedor-video-si" class="oculto" style="margin-bottom: 1.2rem;">
+            <video id="video-festejo" width="100%" controls playsinline style="border-radius: 15px; max-height: 200px; object-fit: cover;">
+                <source src="videos/Excelente.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+        </div>
+
+        <h1 id="texto-final">Hola Ailu, ¿te gustaría ser mi cita para el cine y ver la peli?</h1>
+        
+        <!-- BOTONES SÍ / NO -->
+        <div class="contenedor-botones" id="bloque-botones">
+            <button id="btn-si">¡Sí, me encantaría! 🍿</button>
+            <button id="btn-no">No😢</button>
+        </div>
+
+        <!-- FORMULARIO DE SELECCIÓN DE CITA EN MENDOZA -->
+        <div id="contenedor-cita" class="oculto" style="margin-top: 1.2rem;">
+            <button id="btn-horario" class="btn-destacado">📅 Elegir día, hora y cine</button>
+            
+            <form id="info-horario" class="oculto tarjeta-horario">
+                <!-- PELÍCULA QUE SE VA A VER -->
+                <div class="campo-select" style="text-align: center; background: rgba(255, 255, 255, 0.15); padding: 10px; border-radius: 10px; margin-bottom: 15px;">
+                    <p style="margin: 0; font-size: 1.1rem;">🎬 <strong>Película:</strong></p>
+                    <p style="margin: 5px 0 0 0; font-size: 1.2rem; font-weight: bold; color: #ffd700;">Spider-Man: Brand New Day</p>
+                </div>
+
+                <div class="campo-select">
+                    <label for="select-cine">📍 <strong>Cine (Mendoza):</strong></label>
+                    <select id="select-cine" required>
+                        <option value="Cinemark Hoyts Palmares (Godoy Cruz)">Cinemark Hoyts - Palmares (Godoy Cruz)</option>
+                        <option value="Cinemacenter Mendoza Plaza Shopping (Guaymallén)">Cinemacenter - Mendoza Plaza Shopping (Guaymallén)</option>
+                        <option value="Cine Universidad - Nave Cultural (Ciudad)">Cine Universidad - Nave Cultural (Ciudad)</option>
+                        <option value="Cine Teatro Plaza (Godoy Cruz)">Cine Teatro Plaza (Godoy Cruz)</option>
+                        <option value="Cine Imperial (Maipú)">Cine Imperial (Maipú)</option>
+                    </select>
+                </div>
+
+                <div class="campo-select">
+                    <label for="fecha-cita">📆 <strong>Día y Mes:</strong></label>
+                    <input type="date" id="fecha-cita" required>
+                </div>
+
+                <div class="campo-select">
+                    <label for="select-hora">⏰ <strong>Horario (ART / Mendoza):</strong></label>
+                    <select id="select-hora" required>
+                        <!-- Horarios de madrugada / mañana (00:00 - 12:00) -->
+                        <option value="00:00 hs (Trasnoche)">00:00 hs (Trasnoche)</option>
+                        <option value="01:00 hs">01:00 hs</option>
+                        <option value="02:00 hs">02:00 hs</option>
+                        <option value="08:00 hs">08:00 hs</option>
+                        <option value="09:00 hs">09:00 hs</option>
+                        <option value="10:00 hs">10:00 hs</option>
+                        <option value="11:00 hs">11:00 hs</option>
+                        <option value="12:00 hs">12:00 hs (Mediodía)</option>
+                        <!-- Horarios de tarde / noche -->
+                        <option value="15:00 hs">15:00 hs</option>
+                        <option value="16:30 hs">16:30 hs</option>
+                        <option value="18:00 hs">18:00 hs</option>
+                        <option value="19:30 hs">19:30 hs</option>
+                        <option value="21:00 hs">21:00 hs</option>
+                        <option value="22:30 hs">22:30 hs</option>
+                        <option value="23:15 hs">23:15 hs</option>
+                    </select>
+                </div>
+
+                <!-- CAMPO DE MENSAJE OPCIONAL (PARA EL SÍ) -->
+                <div class="campo-select">
+                    <label for="mensaje-si">💬 <strong>Mensaje o nota opcional:</strong></label>
+                    <textarea id="mensaje-si" rows="3" placeholder="Ej: Llevo los pochoclos... 🍿" style="width: 100%; border-radius: 10px; padding: 8px; border: 1px solid #ccc; font-family: inherit; resize: none;"></textarea>
+                </div>
+
+                <button type="button" id="btn-confirmar-cita" class="btn-confirmar">✨ Confirmar Cita ✨</button>
+            </form>
+
+            <!-- MENSAJE FINAL TRAS CONFIRMAR -->
+            <div id="resumen-confirmado" class="oculto tarjeta-confirmada">
+                <h3>¡Cita agendada! 🎟️</h3>
+                <p id="detalle-resumen"></p>
+                <p class="nota-mendoza">📍 Zona horaria: Mendoza, Argentina (GMT-3)</p>
+            </div>
+        </div>
+
+        <!-- CONTENEDOR DE VIDEO Y MENSAJE (SE MUESTRA AL DECIR NO) -->
+        <div id="contenedor-video" class="oculto" style="margin-top: 1.5rem;">
+            <video id="video-local" width="100%" controls style="border-radius: 15px; max-height: 250px;">
+                <source src="videos/Sad song.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+
+            <!-- CAJA DE MENSAJE OPCIONAL SI DICE NO -->
+            <div id="bloque-mensaje-no" style="margin-top: 1rem;">
+                <label for="mensaje-no" style="display: block; margin-bottom: 5px; font-weight: bold; color: white;">💬 Dejar un mensaje (opcional):</label>
+                <textarea id="mensaje-no" rows="3" placeholder="" style="width: 100%; border-radius: 10px; padding: 8px; border: 1px solid #ccc; font-family: inherit; resize: none;"></textarea>
+                <button type="button" id="btn-enviar-no" class="btn-confirmar" style="margin-top: 8px; width: 100%;">Enviar respuesta 📩</button>
+            </div>
+            <p id="confirmacion-mensaje-no" class="oculto" style="color: #4CAF50; font-weight: bold; margin-top: 10px;">¡Mensaje enviado! ✉️</p>
+        </div>
+    </main>
+
+    <!-- MÚSICA -->
+    <audio id="musica-intro" src="sonidos/Intro.MP3" loop></audio>
+    <audio id="musica-climax" src="sonidos/romantico.MP3" loop></audio>
+
+    <!-- LIBRERÍA PARA CONFETI -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

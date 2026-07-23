@@ -1,0 +1,272 @@
+/* --- ESTILOS BÁSICOS --- */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    font-family: sans-serif;
+    overflow: hidden;
+    position: relative;
+    transition: background 1.5s ease; /* Transición suave al cambiar de fondo */
+}
+
+/* Cambio de fondo para el momento especial */
+body.fondo-especial {
+    background: radial-gradient(circle at center, #3a1c28 0%, #0f0a0d 100%);
+}
+
+#pantalla-inicio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+/* --- TARJETAS DE CRISTAL --- */
+.card {
+    background: rgba(255, 255, 255, 0.08); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    z-index: 10;
+    position: absolute;
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
+}
+
+.card.oculto {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9) translateY(20px);
+    pointer-events: none;
+}
+
+.card h1 {
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.8rem;
+    line-height: 1.4;
+}
+
+/* --- IMAGEN DE FONDO A PANTALLA COMPLETA --- */
+.fondo-pantalla {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Cambia 'tu_imagen_fondo.jpg' por el nombre de tu archivo */
+    background-image: url('imagenes/imagencine.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0.6; /* Ajusta la opacidad si quieres que la imagen se vea más o menos oscura */
+    transition: opacity 1.2s ease;
+}
+
+.oculto-fondo {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- FOTO DESTACADA --- */
+.foto-destacada {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(255, 107, 129, 0.5);
+    margin-bottom: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.foto-destacada:hover {
+    transform: scale(1.05);
+}
+
+/* --- CAMPO DE TEXTO (INPUT) --- */
+input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 20px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #ff6b81;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 107, 129, 0.3);
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- BOTÓN --- */
+button {
+    background-color: #ff6b81;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 107, 129, 0.4);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #ff4757;
+    transform: scale(1.05);
+}
+
+/* --- PELOTITAS FLOTANTES --- */
+.background-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.circle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    filter: blur(1.5px);
+    bottom: -20px;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* --- FORMULARIO Y SELECTORES EN MENDOZA --- */
+.tarjeta-horario {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 1.2rem;
+    border-radius: 18px;
+    margin-top: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    text-align: left;
+    color: #ffffff;
+    font-size: 0.9rem;
+    animation: fadeIn 0.4s ease;
+}
+
+.campo-select {
+    margin-bottom: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.campo-select select, 
+.campo-select input[type="date"] {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.campo-select select option {
+    background-color: #222;
+    color: #fff;
+}
+
+.btn-confirmar {
+    width: 100%;
+    margin-top: 0.5rem;
+    background-color: #ff4757;
+    font-size: 0.95rem;
+}
+
+/* --- TARJETA CITA CONFIRMADA --- */
+.tarjeta-confirmada {
+    background: rgba(46, 213, 115, 0.2);
+    border: 1px solid #2ed573;
+    padding: 1.2rem;
+    border-radius: 18px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 1rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.tarjeta-confirmada h3 {
+    margin-top: 0;
+    color: #2ed573;
+}
+
+.tarjeta-confirmada p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.nota-mendoza {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-top: 10px !important;
+}
+
+/* --- BOTÓN DESTACADO --- */
+.btn-destacado {
+    background-color: #2ed573;
+    box-shadow: 0 4px 15px rgba(46, 213, 115, 0.4);
+}
+
+.btn-destacado:hover {
+    background-color: #26af5f;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
