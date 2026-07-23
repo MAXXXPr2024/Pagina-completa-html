@@ -104,9 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Toggle formulario
-    document.getElementById('btn-horario').addEventListener('click', () => {
-        document.getElementById('info-horario').classList.toggle('oculto');
-    });
+  // Toggle formulario y scroll automático hacia el formulario
+document.getElementById('btn-horario').addEventListener('click', () => {
+    const infoHorario = document.getElementById('info-horario');
+    infoHorario.classList.toggle('oculto');
+
+    // Si el formulario se acaba de mostrar, hacemos scroll suave hacia él
+    if (!infoHorario.classList.contains('oculto')) {
+        setTimeout(() => {
+            infoHorario.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }, 100);
+    }
+});
 
     // Confirmar Cita (SÍ)
     document.getElementById('btn-confirmar-cita').addEventListener('click', () => {

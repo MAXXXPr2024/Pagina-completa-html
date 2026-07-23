@@ -1,16 +1,22 @@
 /* --- ESTILOS BÁSICOS --- */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    padding: 0;
+    padding: 20px 0; /* Margen vertical para respiración en móviles */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: #1a1a1a;
     font-family: sans-serif;
-    overflow: hidden;
+    overflow-x: hidden; /* Evita scroll horizontal */
+    overflow-y: auto;   /* Permite scroll vertical cuando el contenido crece */
     position: relative;
-    transition: background 1.5s ease; /* Transición suave al cambiar de fondo */
+    box-sizing: border-box;
+    transition: background 1.5s ease;
 }
 
 /* Cambio de fondo para el momento especial */
@@ -42,14 +48,15 @@ body.fondo-especial {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 2.5rem 2rem;
+    padding: 2rem 1.5rem;
     border-radius: 24px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     text-align: center;
     max-width: 90%;
     width: 400px;
     z-index: 10;
-    position: absolute;
+    position: relative; /* Cambiado a relative para fluir bien con el scroll */
+    margin: auto;
     transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
 }
 
@@ -58,14 +65,15 @@ body.fondo-especial {
     visibility: hidden;
     transform: scale(0.9) translateY(20px);
     pointer-events: none;
+    display: none !important;
 }
 
 .card h1 {
     color: #ffffff;
     font-weight: 300;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     letter-spacing: 0.5px;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.5rem;
     line-height: 1.4;
 }
 
@@ -76,13 +84,12 @@ body.fondo-especial {
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* Cambia 'tu_imagen_fondo.jpg' por el nombre de tu archivo */
     background-image: url('imagenes/imagencine.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
-    opacity: 0.6; /* Ajusta la opacidad si quieres que la imagen se vea más o menos oscura */
+    opacity: 0.6;
     transition: opacity 1.2s ease;
 }
 
@@ -93,13 +100,13 @@ body.fondo-especial {
 
 /* --- FOTO DESTACADA --- */
 .foto-destacada {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 20px rgba(255, 107, 129, 0.5);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     transition: transform 0.3s ease;
 }
 
@@ -138,8 +145,8 @@ button {
     background-color: #ff6b81;
     color: white;
     border: none;
-    padding: 12px 30px;
-    font-size: 1.05rem;
+    padding: 12px 25px;
+    font-size: 1rem;
     font-weight: bold;
     border-radius: 25px;
     cursor: pointer;
@@ -149,12 +156,12 @@ button {
 
 button:hover {
     background-color: #ff4757;
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 /* --- PELOTITAS FLOTANTES --- */
 .background-circles {
-    position: absolute;
+    position: fixed; /* Mantiene las partículas fijas mientras se scrollea */
     top: 0;
     left: 0;
     width: 100%;
@@ -185,7 +192,7 @@ button:hover {
 
 /* --- FORMULARIO Y SELECTORES EN MENDOZA --- */
 .tarjeta-horario {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.45);
     padding: 1.2rem;
     border-radius: 18px;
     margin-top: 1rem;
@@ -209,7 +216,7 @@ button:hover {
     padding: 10px 14px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.2);
     color: #ffffff;
     font-size: 0.95rem;
     outline: none;
@@ -223,9 +230,10 @@ button:hover {
 
 .btn-confirmar {
     width: 100%;
-    margin-top: 0.5rem;
+    margin-top: 0.8rem;
     background-color: #ff4757;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    padding: 14px;
 }
 
 /* --- TARJETA CITA CONFIRMADA --- */
@@ -260,6 +268,7 @@ button:hover {
 .btn-destacado {
     background-color: #2ed573;
     box-shadow: 0 4px 15px rgba(46, 213, 115, 0.4);
+    width: 100%;
 }
 
 .btn-destacado:hover {
@@ -269,4 +278,25 @@ button:hover {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- AJUSTES ESPECIALES PARA PANTALLAS PEQUEÑAS (MÓVILES) --- */
+@media (max-width: 480px) {
+    body {
+        padding: 15px 0 30px 0; /* Añade margen abajo para despejar botones */
+    }
+
+    .card {
+        padding: 1.5rem 1rem;
+        width: 92%;
+    }
+
+    .foto-destacada {
+        width: 100px;
+        height: 100px;
+    }
+
+    .card h1 {
+        font-size: 1.15rem;
+    }
 }
